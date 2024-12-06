@@ -5,5 +5,13 @@
 *.po
 .sconsign.dblite
 simulator/build/*
+*.zsim.out
+*.log
+*.dramRequestsPerPhase
+simulator/zsim_stats/*
+simulator/config_files/*
+workloads/*
+data/*
+simulator/.vscode/*
 
 

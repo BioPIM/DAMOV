@@ -10,6 +10,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <cstdint>
 namespace ramulator {
 
 class ScalarStat;

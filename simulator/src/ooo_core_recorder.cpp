@@ -219,7 +219,7 @@ void OOOCoreRecorder::recordAccess(uint64_t curCycle, uint64_t dispatchCycle, ui
 
     if (IsGet(tr.type)) {
         assert(tr.endEvent);
-        //info("Handling GET: curCycle %ld ev(reqCycle %ld respCycle %ld) respCycle %ld", curCycle, tr.reqCycle, tr.respCycle, respCycle);
+        info("Handling GET: curCycle %ld ev(reqCycle %ld respCycle %ld) respCycle %ld", curCycle, tr.reqCycle, tr.respCycle, respCycle);
 
         addIssueEvent(curCycle);
 

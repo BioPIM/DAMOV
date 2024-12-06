@@ -110,7 +110,7 @@ with open(tmp, "r") as ins:
                     
 
         except:
-            print("Couldn't read some stat. Check label: " + label)
+            print "Couldn't read some stat. Check label: " + label
 
 # ====================== CPU Metrics  ======================
 if(len(cycles_list)!=0):
@@ -155,12 +155,12 @@ else:
     lfmr = 0
 
 print("\n ------------------ Summary ------------------------")
-print(("Instructions: " + str(instructions)))
-print(("Cycles: " + str(cycles)))
-print(("IPC: " + str(ipc)))
-print(("L3 Miss Rate (%): " + str(l3_miss_rate)))
-print(("L2 Miss Rate (%): " + str(l2_miss_rate)))
-print(("L1 Miss Rate (%): " + str(l1_miss_rate)))
-print(("L3 MPKI: " + str(l3_mpki)))
-print(("LFMR: " + str(lfmr)))
+print("Instructions: " + str(instructions))
+print("Cycles: " + str(cycles))
+print("IPC: " + str(ipc))
+print("L3 Miss Rate (%): " + str(l3_miss_rate))
+print("L2 Miss Rate (%): " + str(l2_miss_rate))
+print("L1 Miss Rate (%): " + str(l1_miss_rate))
+print("L3 MPKI: " + str(l3_mpki))
+print("LFMR: " + str(lfmr))
 print("")

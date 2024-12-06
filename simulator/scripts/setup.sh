@@ -1,4 +1,5 @@
 #!/bin/bash
+apt-get -y install python2.7
 apt-get -y install build-essential
 apt-get -y install scons
 apt-get -y install automake
