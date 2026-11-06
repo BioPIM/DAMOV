@@ -18,7 +18,7 @@ if(len(sys.argv) < 2):
     print("command_file: benckmark,applicationm,function,command")
     exit(1)
 
-if not os.getcwd.endswith("simulator"):
+if not os.getcwd().endswith("simulator"):
     print(f"Do not run this script from {os.getcwd()}, run from [DAMOV repo root]/simulator")
     exit(1)
 
