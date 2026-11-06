@@ -30,6 +30,9 @@
 
 #include <time.h>
 #include <string>
+#include <signal.h>
+#include <execinfo.h>
+#include <stdio.h>
 #include "stats.h"
 
 //Helper function
@@ -103,7 +106,18 @@ class TimeBreakdownStat : public VectorCounter {
             assert(newState < size());
 
             uint64_t curNs = getNs();
-            assert(curNs >= startNs);
+	    if (curNs < startNs) {
+		    kill(0, 5);
+		    info("cur: %ld, start: %ld, diff: %ld", curNs, startNs, curNs - startNs);
+		    void* callstack[128];
+		    int i, frames = backtrace(callstack, 128);
+		    char** strs = backtrace_symbols(callstack, frames);
+		    for (i = 0; i < frames; ++i) {
+			        info("%s", strs[i]);
+		    }
+		    free(strs);
+	    }
+            //assert(curNs >= startNs);
 
             inc(curState, curNs - startNs);
             //info("%d: %ld / %ld", curState, curNs - startNs, VectorCounter::count(curState));

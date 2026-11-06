@@ -54,7 +54,7 @@ def buildSim(cppFlags, dir, type, pgo=None):
     # NOTE (dsm 10 Jan 2013): Tested with Pin 2.10 thru 2.12 as well
     # NOTE: Original Pin flags included -fno-strict-aliasing, but zsim does not do type punning
     # NOTE (dsm 16 Apr 2015): Update flags code to support Pin 2.14 while retaining backwards compatibility
-    env["CPPFLAGS"] += " -g -std=c++0x -Wall -w -Wno-deprecated -Wno-unused-function -Wno-unknown-pragmas -Wno-catch-value -fomit-frame-pointer -fno-stack-protector"
+    env["CPPFLAGS"] += " -ggdb -std=c++0x -Wall -w -Wno-deprecated -Wno-unused-function -Wno-unknown-pragmas -Wno-catch-value -fomit-frame-pointer -fno-stack-protector"
     env["CPPFLAGS"] += " -MMD -DBIGARRAY_MULTIPLIER=1 -DUSING_XED -DTARGET_IA32E -DHOST_IA32E -fPIC -DTARGET_LINUX"
     # NOTE: (mgao Jan 2017): Pin 2.14 requires ABI version of 1002, while gcc-5 and later bumps the API version.
     # Switch to gcc-4.x by using -fabi-version=2
@@ -227,8 +227,8 @@ if GetOption('debugBuild'): buildTypes.append("debug")
 if GetOption('releaseBuild'): buildTypes.append("release")
 if GetOption('optBuild') or len(buildTypes) == 0: buildTypes.append("opt")
 
-march = "core2" # ensure compatibility across condor nodes
-#march = "native" # for profiling runs
+#march = "core2" # ensure compatibility across condor nodes
+march = "native" # for profiling runs
 
 buildFlags = {"debug": "-g -O0",
               "opt": "-march=%s -g -O3 -funroll-loops" % march, # unroll loops tends to help in zsim, but in general it can cause slowdown

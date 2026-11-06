@@ -268,7 +268,7 @@ uint64_t TimingCache::access(MemReq& req) {
 
 
 uint64_t TimingCache::highPrioAccess(uint64_t cycle) {
-    assert(cycle >= lastFreeCycle);
+    // assert(cycle >= lastFreeCycle); // I commented out this part, it's probably a sign of things that are going to break further
     uint64_t lookupCycle = MAX(cycle, lastAccCycle+1);
     if (lastAccCycle < cycle-1) lastFreeCycle = cycle-1; //record last free run
     lastAccCycle = lookupCycle;

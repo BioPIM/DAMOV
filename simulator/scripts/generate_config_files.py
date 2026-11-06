@@ -17,7 +17,7 @@ def mkdir_p(directory):
             raise
 
 def create_host_configs_no_prefetch(benchmark, application, function, command, version):
-    number_of_cores = [1, 4, 16, 64, 112, 128, 256]
+    number_of_cores = [1, 4, 16, 20, 32, 40, 64, 80, 112, 128, 256]
 
     for cores in number_of_cores:
         mkdir_p(ROOT+"config_files/host_"+version+"/no_prefetch/"+benchmark+"/"+str(cores)+"/")
@@ -40,7 +40,7 @@ def create_host_configs_no_prefetch(benchmark, application, function, command, v
         ins.close()
 
 def create_host_configs_prefetch(benchmark, application, function, command, version):
-    number_of_cores = [1, 4, 16, 64, 112, 128, 256]
+    number_of_cores = [1, 4, 16, 20, 32, 40, 64, 80, 112, 128, 256]
 
     for cores in number_of_cores:
         mkdir_p(ROOT+"config_files/host_"+version+"/prefetch/"+benchmark+"/"+str(cores)+"/")
@@ -63,7 +63,7 @@ def create_host_configs_prefetch(benchmark, application, function, command, vers
         ins.close()
 
 def create_pim_configs(benchmark, application, function, command, version):
-    number_of_cores = [1, 4, 16, 64, 112, 128, 256]
+    number_of_cores = [1, 4, 16, 20, 32, 40, 64, 80, 112, 128, 256]
 
     for cores in number_of_cores:
         mkdir_p(ROOT+"config_files/pim_"+version+"/"+benchmark+"/"+str(cores)+"/")
@@ -90,6 +90,9 @@ if(len(sys.argv) < 2):
     print("Usage python generate_config_files.py command_file")
     print("command_file: benckmark,applicationm,function,command")
     exit(1)
+
+if(len(sys.argv) == 3):
+    stat_prefix = sys.argv[2]
 
 with open(sys.argv[1], "r") as command_file:
     for line in command_file:

@@ -1,5 +1,5 @@
 CXX:=g++
-CXXFLAGS=-DRAMULATOR -Wall -std=c++11 -w
+CXXFLAGS=-DRAMULATOR -Wall -std=c++11 -w -ggdb
 OPTFLAGS=-O3 
 
 
